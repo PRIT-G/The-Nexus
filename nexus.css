@@ -1,0 +1,46 @@
+.main_body{
+    background-color: black;
+
+}
+h1{
+    color: greenyellow;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    text-decoration-line: underline;
+}
+p{
+    color: greenyellow;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+h2{
+    color: greenyellow;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration-line: underline;
+    text-align: center;
+}
+h3{
+    color: greenyellow;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration-line: underline;
+    text-align: center;
+}
+img{
+    width: 50%;
+    height: 50%;
+}
+li{
+    color: greenyellow;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+button{
+    background-color: gold;
+    color: green;
+    align-items: center;
+    border-radius: 1cm;
+    border-color: yellowgreen;
+    
+}
+
