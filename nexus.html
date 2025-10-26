@@ -1,75 +1,435 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <title>The Nexus</title>
-    <link rel="stylesheet" href="nexus.css">
-    
-    
-    
-    <div class="main_body">
-       <img src="nexus logo.png">
-     <h1>The Nexus</h1>
-     <div class="container">
-        <div class="row">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Nexus — Workspace & Coding Academy</title>
+  <meta name="description" content="The Nexus — a modern workspace and coding academy for young people. Courses, employment opportunities, restaurant and community events." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; /* dark navy */
+      --card:#0b1220;
+      --muted:#9aa7bf;
+      --accent:#00d1b2; /* teal */
+      --accent-2:#7c3aed; /* purple */
+      --glass: rgba(255,255,255,0.04);
+      --surface:#0b1220;
+      --radius:14px;
+      color-scheme: dark;
+    }
 
-     <!-- Bootstrap CSS -->
-     <div class="col">
-    <a href="file:///C:/Users/NIGERIA/Desktop/Coding%20Classwork/w3.html">Home</a>
-     </div>
-     <div class="col">
-        <a href="file:///C:/Users/NIGERIA/Desktop/Coding%20Classwork/w4.html">About Us</a>
-     </div>
-     </div>
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg), #08111a 80%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Layout */
+    header{
+      position:sticky;top:0;z-index:30;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(11,18,32,0.65), rgba(11,18,32,0.25));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:28px 20px}
+    .nav{display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:52px;height:52px;object-fit:contain;border-radius:10px;background:var(--glass);padding:6px}
+    .brand h1{font-size:18px;margin:0;letter-spacing:0.4px}
+    nav ul{display:flex;gap:10px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    nav a:hover{color:var(--accent)}
+
+    .cta{display:flex;gap:8px;align-items:center}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:10px;color:#042329;font-weight:700;text-decoration:none}
+    .ghost{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);color:var(--muted);text-decoration:none}
+
+    /* Hero */
+    .hero{padding:48px 20px 36px}
+    .hero-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center}
+    .hero h2{font-size:32px;margin:0 0 10px}
+    .hero p.lead{color:var(--muted);margin:0 0 18px}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:var(--radius);box-shadow:0 6px 24px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+
+    /* Features */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .feature h4{margin:0 0 8px}
+    .feature p{color:var(--muted);margin:0}
+
+    /* Sections */
+    section{padding:40px 20px}
+    h2.section-title{margin:0 0 20px;font-size:20px}
+    .two-col{display:grid;grid-template-columns:1fr 380px;gap:24px}
+    .departments ul{list-style:disc;margin:10px 0 0 20px;color:var(--muted)}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+
+    /* Footer */
+    footer{padding:28px 20px;border-top:1px solid rgba(255,255,255,0.03);margin-top:20px}
+    .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .small{color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero-grid, .two-col{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      nav ul{display:none}
+      .nav .menu-toggle{display:block}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
+      .grid-3{grid-template-columns:1fr}
+      .gallery img{height:120px}
+      .brand h1{font-size:16px}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:999px;font-weight:600}
+    .hidden{display:none}
+
+    /* Accessibility focus */
+    a:focus,button:focus{outline:3px solid rgba(0,209,178,0.14);outline-offset:3px}
+
+    /* contact form */
+    .form-row{display:flex;gap:8px}
+    .form-row input,textarea{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .form-row textarea{min-height:120px;resize:vertical}
+
+    /* ==== Enhanced Background Effects ==== */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(0,209,178,0.08), transparent 70%),
+              linear-gradient(135deg, #08111a 0%, #0b1220 40%, #101b2e 100%);
+  animation: bgMove 20s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+@keyframes bgMove {
+  0% { transform: translate(0,0) scale(1); }
+  100% { transform: translate(-5%, -5%) scale(1.1); }
+}
+
+/* Floating Particles (soft twinkling background dots) */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: particleFloat 60s linear infinite;
+  z-index: -1;
+}
+
+@keyframes particleFloat {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+/* ==== Enhanced Navbar Effects ==== */
+header {
+  transition: all 0.3s ease;
+  background: linear-gradient(180deg, rgba(11,18,32,0.8), rgba(11,18,32,0.4));
+  box-shadow: 0 2px 14px rgba(0,0,0,0.4);
+}
+
+header.scrolled {
+  background: rgba(11,18,32,0.95);
+  box-shadow: 0 2px 18px rgba(0,0,0,0.6);
+}
+
+nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 6px var(--accent);
+}
+
+/* Navbar subtle glow around brand logo */
+.brand img {
+  box-shadow: 0 0 8px rgba(0,209,178,0.3);
+  transition: box-shadow 0.4s ease;
+}
+.brand img:hover {
+  box-shadow: 0 0 16px rgba(0,209,178,0.6);
+}
+
+/* Smooth navbar color change when scrolling */
+
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Replace with your logo at assets/logo.png -->
+        <img src="assets/logo.png" alt="The Nexus logo" onerror="this.style.opacity=.6;this.alt='The Nexus'" />
+        <div>
+          <h1>The Nexus</h1>
+          <div class="small muted">Workspace • Learning • Employment</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#courses">Coding Class</a></li>
+          <li><a href="#jobs">Employment</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="cta">
+        <a class="ghost" href="#gallery">Gallery</a>
+        <a class="btn" href="#contact">Enroll / Apply</a>
+        <button class="menu-toggle ghost" aria-expanded="false" aria-label="Toggle menu" style="display:none">☰</button>
+      </div>
     </div>
-    
-     <P>The Nexus is a workspace that serves as a background for all young people <br> who aspire to learn coding.</P>
-     <p>It is also a place that allows employment oppurtunities for anyone looking for a job.</p>
-     <h2>Workspace:</h2>
-     <p>The nexus is a place that aims to concentrate on ensuring an enjoyable time.</p>
-     <p>We believe technology should help the world and have positive impacts on our youths, which is why we have the use of smart doors, air<br> conditioners and lots more</p>
-     <p>Even though we use technology, we don't allow  technology have effect on our African culture which is why we have popular African leader's<br> that have promoted African Culture all over the world</p>
-    <p> We have multiple workspaces with quality seats tables and stairs along with an automatic socket compartment in some of the workspaces and clean.</p>
-    <p>The place consists various departments like:</p>
-    <h3>Administrative department</h3>
-    <p>All of this wouldn't be possible without going through the entrance table,<br> headed by our administrative officer of the administrative department</p>
-    <p>The Centre table is a desk with the nexus logo in front of the table,<br> then an extension that holds our CAO(Cheif Administravive Officer)'s<br> laptop and other flyer that advertises activities held by the nexus then a quality chair</p> 
-    <h3>Purchase Department:</h3>
-    <p>The purchase department is an admirable department because of its<br> ability to be prudent in all situations.</p>
-    <P>The department is very wise in area's of contributing money for various<br> programmes held by the Nexus</P>
-    <p> This the department that is very helpful for the survival of the nexus</p>  
-    <p>We also have a new conference room called the "extension"</p>
-    <h2>Coding Class</h2> 
+  </header>
 
-    <p>The Nexus also offers a coding class from ages 5 to 22.<br>The coding class also encompasses graphic design, web developing, <br>visual animation, cyber security, python, java, the basics of using a computer and other courses</p>
-    <h3>Fee:</h3>
-    <p>N20,000 per child</p>
-    <h3>Address:</h3>
-    <p>No.8 Bida Road, Beside Kasupda, Near CBN, Kaduna</p>
-    <p>Our students are trained under the tutelage of our lecturers</p>
-    <p>The classes are divided into two;
-        <Li>The beginner class: from ages 5-10</Li>
-        <li>The senior class: from ages 11-22</li>
-        <p>It also provides our young learners an opportunity to learn a skill and choose a future career</p>
-        <P>The link for the website for that is in the container below.</P>
-        <p><button><a href="file:///C:/Users/NIGERIA/Desktop/Coding%20Classwork/Coding.html">The link</a></button></p>
-        <h2>Employment</h2>
-       
-        <p>The Nexus is not just a place for people to learn how to code, but is a placewhere we raie the fututre generation.</p>
-       
-        <p>The Nexus is not only a place where we raise kids to embrace tech in their everyday lives, bbut we also have employment opportunities for different people who are seeking employment but can't find the right places</p>
-        <p>There is a website for this entirely. The link is below</p>
-        <p><button><a href="file:///C:/Users/NIGERIA/Desktop/Coding%20Classwork/Jaba%20Boys.Html">The link</a></button></p>
-        <h2>Restaurant</h2>
-        <p>Like the popular saying goes"All work no play makes jack dull boy". This is what we aim to embody in our day-to-day life.</p>
-        <p>Here at the Nexus, we have a restaurant where we sell refreshments, including snacks and food like pounded yam, spagetti, rice, meat pie e.t.c</p>
-        <p>Here we sell @ cheap prices.</p>
-        <P>We assure you standard food.</P>
-        <p>Here are some posters that show some of the various things we do at the Nexus</p>
-        <p><img src="6.jpg">
-        <img src="Your paragraph text (3).jpg">
-        <img src="Your paragraph text.jpg" alt="logo">
-        <img src="Your paragraph text (5).jpg">
-        <img src="Work Smart Not hard (2).jpg">
-    </p>
-    </body>
-</div>
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h2>Welcome to <span style="color:var(--accent)">The Nexus</span></h2>
+          <p class="lead">A modern workspace & coding academy in Kaduna providing tech courses for ages 5–22, employment pathways and community events.</p>
+
+          <div class="card">
+            <p><strong>Address:</strong> No.8 Bida Road, Beside Kasupda, Near CBN, Kaduna</p>
+            <p><strong>Fees:</strong> ₦20,000 per child (contact us for discounts & sibling rates)</p>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <a class="btn" href="#courses">View Courses</a>
+              <a class="ghost" href="#jobs">Employment</a>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-top:18px">
+            <div class="card feature">
+              <h4>Smart Workspace</h4>
+              <p class="muted">Air-conditioned rooms, smart doors and modern seating arrangements.</p>
+            </div>
+            <div class="card feature">
+              <h4>Hands-on Teaching</h4>
+              <p class="muted">Project-based classes with real-world assignments and company collaboration.</p>
+            </div>
+            <div class="card feature">
+              <h4>Employment Paths</h4>
+              <p class="muted">Placements, freelancing guidance and partner company listings.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h3 style="margin:0 0 8px">Quick facts</h3>
+            <p class="muted" style="margin:0 0 10px">Beginner to advanced classes • Graphic design • Web dev • Python • Java • Cybersecurity</p>
+            <ul class="muted" style="margin:0 0 12px">
+              <li>Beginner: ages 5–10</li>
+              <li>Senior: ages 11–22</li>
+            </ul>
+            <div style="display:flex;gap:8px">
+              <a class="pill" href="#contact">Register</a>
+              <a class="pill" href="#jobs">Apply for jobs</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="card container" style="margin-bottom:20px">
+      <h2 class="section-title">About The Nexus</h2>
+      <div class="two-col">
+        <div>
+          <p>The Nexus is a workspace that serves as a supportive background for young people who aspire to learn coding and digital skills. We pair training with real employment opportunities and community-driven projects.</p>
+
+          <h3>Departments</h3>
+          <div class="departments">
+            <ul>
+              <li>Administrative Department (entrance & centre table with CAO)</li>
+              <li>Purchase Department (funding & programs)</li>
+              <li>Conference Room ("Extension")</li>
+            </ul>
+          </div>
+
+          <h3 style="margin-top:12px">Workspace culture</h3>
+          <p class="muted">We use technology responsibly and celebrate African culture — displaying leaders and stories that inspire our community.</p>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h4 style="margin-top:0">Our promise</h4>
+            <p class="muted">Comfortable seats, reliable sockets, clean facilities and safe spaces for learning and collaboration.</p>
+            <p style="margin-top:12px"><strong>Opening hours:</strong><br>Mon–Sat 8:00 — 20:00</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="courses" class="container">
+      <h2 class="section-title">Coding Class & Courses</h2>
+      <div class="card">
+        <p>We teach a range of subjects suitable for different age groups and skill levels:</p>
+        <ul class="muted">
+          <li>Introduction to computers & digital literacy</li>
+          <li>Web development: HTML, CSS, JavaScript</li>
+          <li>Graphic design & visual animation</li>
+          <li>Python programming & data basics</li>
+          <li>Java fundamentals</li>
+          <li>Intro to cybersecurity</li>
+        </ul>
+        <p style="margin-top:12px">Classes are project-based and culminate in a showcase where students present a final project.</p>
+      </div>
+    </section>
+
+    <section id="jobs" class="container">
+      <h2 class="section-title">Employment & Opportunities</h2>
+      <div class="card">
+        <p>We help learners transition into work through:</p>
+        <ul class="muted">
+          <li>Placement with partner companies</li>
+          <li>On-site freelancing and contract work</li>
+          <li>Resume & interview preparation</li>
+          <li>Job board and application support</li>
+        </ul>
+        <p>If you have a job listing or would like to partner, please <a href="#contact">contact us</a>.</p>
+      </div>
+    </section>
+
+    <section id="restaurant" class="container">
+      <h2 class="section-title">Restaurant</h2>
+      <div class="card">
+        <p>Good food fuels great work. Our on-site restaurant serves affordable meals and refreshments — local favourites like pounded yam, spaghetti, rice dishes and snacks.</p>
+        <p class="muted">Standards & hygiene are strictly maintained. Ask about daily combos and discounts for students.</p>
+      </div>
+    </section>
+
+    <section id="gallery" class="container">
+      <h2 class="section-title">Gallery & Posters</h2>
+      <div class="gallery">
+        <!-- Replace these src with your images in assets/ folder -->
+        <img src="assets/6.jpg" alt="Nexus event 1" onerror="this.style.opacity=.5">
+        <img src="assets/poster1.jpg" alt="Poster 2" onerror="this.style.opacity=.5">
+        <img src="assets/poster2.jpg" alt="Poster 3" onerror="this.style.opacity=.5">
+        <img src="assets/poster3.jpg" alt="Poster 4" onerror="this.style.opacity=.5">
+        <img src="assets/work-smart.jpg" alt="Work smart" onerror="this.style.opacity=.5">
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2 class="section-title">Contact & Registration</h2>
+      <div class="card">
+        <form id="contactForm" onsubmit="return handleSubmit(event)">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div class="form-row">
+              <input id="name" name="name" type="text" placeholder="Full name" required aria-label="Full name">
+              <input id="phone" name="phone" type="tel" placeholder="Phone number" required aria-label="Phone number">
+            </div>
+            <div class="form-row">
+              <input id="email" name="email" type="email" placeholder="Email address" aria-label="Email address">
+              <input id="subject" name="subject" type="text" placeholder="I want to... (Enroll / Apply / Partner)" required>
+            </div>
+            <textarea id="message" name="message" placeholder="Your message (optional)"></textarea>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn" type="submit">Send</button>
+              <div class="muted">Or call: +234 800 000 0000</div>
+            </div>
+            <div id="formMsg" class="muted small" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>The Nexus</strong>
+        <div class="small muted">No.8 Bida Road, Beside Kasupda, Near CBN, Kaduna</div>
+      </div>
+      <div class="small muted">© <span id="year"></span> The Nexus — All rights reserved</div>
+      <div class="small muted">Built with care • Contact: hello@thenexus.example</div>
+    </div>
+  </footer>
+
+  <script>
+    // small scripts: mobile nav toggle, smooth scrolling and form handling
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scrolling for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // Basic form handler - replaces real backend for demo
+    function handleSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const msg = document.getElementById('formMsg');
+      if(!name || !subject){
+        msg.textContent = 'Please fill name and subject.';
+        return false;
+      }
+      msg.textContent = 'Thanks ' + name.split(' ')[0] + '! Your request to "' + subject + '" has been received. We will contact you soon.';
+      // Optionally clear the form
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  header.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+
+</html>
